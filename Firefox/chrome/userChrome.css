@@ -1,0 +1,123 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); /* only needed once */
+
+toolbarbutton#alltabs-button {
+	-moz-binding: url("userChrome.xml#js");
+}
+
+#PersonalToolbar {
+  margin-top: -20px !important;
+  transition: ease-in-out .15s !important;
+}
+
+#navigator-toolbox:hover #PersonalToolbar {
+  margin-top: 0 !important;
+}
+
+#titlebar-buttonbox {
+  z-index: 2 !important;
+}
+
+#nav-bar{
+  z-index: 1 !important;
+}
+#toolbar-menubar {
+  min-height: 0.1px !important;
+  max-height: 1px !important;
+}
+
+#main-menubar {
+  min-height: 30px !important;
+  position: fixed !important;
+  z-index: 2000000000000000000 !important;
+}
+#urlbar-container {
+  max-width: 400px !important;
+}
+
+/*Hide tab bar*/
+#TabsToolbar>*:not(:last-child) {
+  visibility: hidden;
+  height: 32px;
+}
+
+/*Hide Back/Forward button*/
+#back-button, #forward-button {
+  display: none;
+}
+
+/*Toolbar to top*/
+#nav-bar {
+	border-top: 0px !important;
+	margin-right: 138px;
+	margin-top: -32px;
+}
+
+/*Hide sidebar header*/
+#sidebar-header {
+  display: none;
+}
+
+/*Autohide sidebar*/
+#sidebar-box {
+  overflow: hidden;
+  min-width: 30px;
+  max-width: 30px;
+  transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  border-right: 1px solid #0c0c0d;
+  z-index: 2;
+}
+#sidebar-box:hover, #sidebar-box #sidebar {
+  min-width: 180px;
+  max-width: 180px;
+}
+
+/*Remove bookmark toolbar item text*/
+toolbarbutton.bookmark-item>.toolbarbutton-text,
+toolbarbutton.bookmark-item>.toolbarbutton-multiline-text {display: none !important;}
+
+/* Colored folders for bookmark sidebar, toolbar, menu button */
+#sidebar-search-container {
+  background-color: rgb(235,235,235) !important;
+}
+#bookmarks-view-children, #historyTree {
+  height: .75 em !important;
+}
+#bookmarks-view, #historyTree {
+  background-color: rgb(235,235,235) !important;
+}
+#bookmarksMenuPopup * {
+  background-color: rgb(235,235,235) !important;
+  color: #333333 !important;
+}
+  /* Standard folder */
+#bookmarks-view treechildren::-moz-tree-image(container),
+#PlacesToolbarItems toolbarbutton[container="true"] .toolbarbutton-icon,
+#PlacesToolbarItems menu[container="true"] .menu-iconic-left,
+#BMB_bookmarksPopup menu[container="true"] .menu-iconic-icon {
+  fill: #e8bb00 !important;
+}
+  /* Live Bookmark (RSS Feed) */
+#bookmarks-view treechildren::-moz-tree-image(container, livemark),
+#PlacesToolbarItems toolbarbutton[container="true"][livemark="true"] .toolbarbutton-icon,
+#PlacesToolbarItems menu[container="true"][livemark="true"] .menu-iconic-left,
+#BMB_bookmarksPopup menu[container="true"][livemark="true"] .menu-iconic-icon {
+  fill: orange !important;
+}
+  /* Smart bookmark folder */
+#bookmarks-view treechildren::-moz-tree-image(container, query),
+#PlacesToolbarItems toolbarbutton[container="true"][query="true"] .toolbarbutton-icon,
+#PlacesToolbarItems menu[container="true"][query="true"] .menu-iconic-left,
+#BMB_bookmarksPopup menu[container="true"][query="true"] .menu-iconic-icon {
+  fill: #69c !important;
+}
+  /* These "containers" are SVG in the sidebar, not yet on the menu */
+#bookmarks-view treechildren::-moz-tree-image(container, OrganizerQuery_BookmarksMenu) {
+  fill: olive !important;
+}
+#bookmarks-view treechildren::-moz-tree-image(container, OrganizerQuery_BookmarksToolbar) {
+  fill: olive !important;
+}
+#bookmarks-view treechildren::-moz-tree-image(container, OrganizerQuery_UnfiledBookmarks) {
+  fill: olive !important;
+}
